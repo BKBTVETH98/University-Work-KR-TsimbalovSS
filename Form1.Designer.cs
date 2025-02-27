@@ -34,6 +34,8 @@
             label1 = new Label();
             label2 = new Label();
             pictureBox1 = new PictureBox();
+            button1 = new Button();
+            btnCompareByByte = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -110,12 +112,34 @@
             pictureBox1.TabStop = false;
             pictureBox1.Click += pictureBox1_Click;
             // 
+            // button1
+            // 
+            button1.Location = new Point(80, 354);
+            button1.Name = "button1";
+            button1.Size = new Size(172, 41);
+            button1.TabIndex = 6;
+            button1.Text = "Хеш сравнение";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += btnCompareByHash_Click;
+            // 
+            // btnCompareByByte
+            // 
+            btnCompareByByte.Location = new Point(508, 354);
+            btnCompareByByte.Name = "btnCompareByByte";
+            btnCompareByByte.Size = new Size(172, 41);
+            btnCompareByByte.TabIndex = 7;
+            btnCompareByByte.Text = "Побайтовое сравнение";
+            btnCompareByByte.UseVisualStyleBackColor = true;
+            btnCompareByByte.Click += btnCompareByByte_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(55, 69, 69);
             ClientSize = new Size(783, 444);
+            Controls.Add(btnCompareByByte);
+            Controls.Add(button1);
             Controls.Add(pictureBox1);
             Controls.Add(label2);
             Controls.Add(label1);
@@ -141,5 +165,7 @@
         private Label label1;
         private Label label2;
         private PictureBox pictureBox1;
+        private Button button1;
+        private Button btnCompareByByte;
     }
 }
