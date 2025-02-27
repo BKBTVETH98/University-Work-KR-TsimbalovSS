@@ -41,7 +41,7 @@
             // 
             // btnSelectFiles
             // 
-            btnSelectFiles.Location = new Point(294, 354);
+            btnSelectFiles.Location = new Point(312, 482);
             btnSelectFiles.Name = "btnSelectFiles";
             btnSelectFiles.Size = new Size(172, 41);
             btnSelectFiles.TabIndex = 0;
@@ -57,9 +57,9 @@
             listBox1.ForeColor = SystemColors.Window;
             listBox1.FormattingEnabled = true;
             listBox1.ItemHeight = 21;
-            listBox1.Location = new Point(80, 67);
+            listBox1.Location = new Point(91, 55);
             listBox1.Name = "listBox1";
-            listBox1.Size = new Size(600, 107);
+            listBox1.Size = new Size(600, 149);
             listBox1.TabIndex = 1;
             // 
             // listBox2
@@ -71,9 +71,9 @@
             listBox2.FormattingEnabled = true;
             listBox2.HorizontalScrollbar = true;
             listBox2.ItemHeight = 21;
-            listBox2.Location = new Point(80, 232);
+            listBox2.Location = new Point(91, 280);
             listBox2.Name = "listBox2";
-            listBox2.Size = new Size(600, 107);
+            listBox2.Size = new Size(600, 149);
             listBox2.TabIndex = 2;
             // 
             // label1
@@ -81,7 +81,7 @@
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 15F);
             label1.ForeColor = SystemColors.Window;
-            label1.Location = new Point(288, 24);
+            label1.Location = new Point(299, 12);
             label1.Name = "label1";
             label1.Size = new Size(185, 28);
             label1.TabIndex = 3;
@@ -93,7 +93,7 @@
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 15F);
             label2.ForeColor = SystemColors.Window;
-            label2.Location = new Point(286, 189);
+            label2.Location = new Point(296, 228);
             label2.Name = "label2";
             label2.Size = new Size(188, 28);
             label2.TabIndex = 4;
@@ -114,7 +114,7 @@
             // 
             // button1
             // 
-            button1.Location = new Point(80, 354);
+            button1.Location = new Point(91, 482);
             button1.Name = "button1";
             button1.Size = new Size(172, 41);
             button1.TabIndex = 6;
@@ -124,7 +124,7 @@
             // 
             // btnCompareByByte
             // 
-            btnCompareByByte.Location = new Point(508, 354);
+            btnCompareByByte.Location = new Point(519, 482);
             btnCompareByByte.Name = "btnCompareByByte";
             btnCompareByByte.Size = new Size(172, 41);
             btnCompareByByte.TabIndex = 7;
@@ -137,15 +137,15 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(55, 69, 69);
-            ClientSize = new Size(783, 444);
+            ClientSize = new Size(783, 562);
             Controls.Add(btnCompareByByte);
             Controls.Add(button1);
-            Controls.Add(pictureBox1);
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(listBox2);
             Controls.Add(listBox1);
             Controls.Add(btnSelectFiles);
+            Controls.Add(pictureBox1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "Form1";
             Opacity = 0.9D;
