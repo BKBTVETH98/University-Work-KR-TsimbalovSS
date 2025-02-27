@@ -63,6 +63,16 @@ namespace KRTsimbalov.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _1486395863_menu2_80615 {
+            get {
+                object obj = ResourceManager.GetObject("1486395863-menu2_80615", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _1486395882_close_80604 {
             get {
                 object obj = ResourceManager.GetObject("1486395882-close_80604", resourceCulture);

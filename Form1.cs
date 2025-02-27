@@ -4,9 +4,15 @@ namespace KRTsimbalov
 {
     public partial class Form1 : Form
     {
-        private List<string> filePaths = new List<string>();
+        private Form currentForm;
         private Point mouseOffset;
         private bool isMouseDown = false;
+        private List<Control> savedControls = new List<Control>();
+
+        public List<string> filePaths = new List<string>();
+        public Form2 form2 = new Form2();
+
+
         public Form1()
         {
             InitializeComponent();
@@ -216,5 +222,41 @@ namespace KRTsimbalov
             isMouseDown = false; // Останавливаем перетаскивание
         }
 
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(form2);
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            form2 = new Form2();
+        }
+        private void OpenChildForm(Form childForm)
+        {
+            if (currentForm != null)
+            {
+                // Возвращаем сохранённые контролы
+                panel1.Controls.Clear();
+                panel1.Controls.AddRange(savedControls.ToArray());
+                currentForm.Hide();
+                currentForm = null;
+                savedControls.Clear();
+            }
+            else
+            {
+
+                savedControls = panel1.Controls.Cast<Control>().ToList();
+                currentForm = childForm;
+                childForm.TopLevel = false;
+                childForm.FormBorderStyle = FormBorderStyle.None;
+                childForm.Dock = DockStyle.Fill;
+                panel1.Controls.Add(childForm);
+                panel1.Tag = childForm;
+                childForm.BringToFront();
+                childForm.Show();
+
+            }
+
+        }
     }
 }
