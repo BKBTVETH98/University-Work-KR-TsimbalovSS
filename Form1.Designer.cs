@@ -57,7 +57,7 @@
             listBox1.ForeColor = SystemColors.Window;
             listBox1.FormattingEnabled = true;
             listBox1.ItemHeight = 21;
-            listBox1.Location = new Point(91, 61);
+            listBox1.Location = new Point(91, 69);
             listBox1.Name = "listBox1";
             listBox1.Size = new Size(600, 149);
             listBox1.TabIndex = 1;
@@ -71,7 +71,7 @@
             listBox2.FormattingEnabled = true;
             listBox2.HorizontalScrollbar = true;
             listBox2.ItemHeight = 21;
-            listBox2.Location = new Point(91, 280);
+            listBox2.Location = new Point(91, 304);
             listBox2.Name = "listBox2";
             listBox2.Size = new Size(600, 149);
             listBox2.TabIndex = 2;
@@ -93,7 +93,7 @@
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 15F);
             label2.ForeColor = SystemColors.Window;
-            label2.Location = new Point(297, 231);
+            label2.Location = new Point(297, 247);
             label2.Name = "label2";
             label2.Size = new Size(188, 28);
             label2.TabIndex = 4;
