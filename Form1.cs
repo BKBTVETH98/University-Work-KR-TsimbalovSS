@@ -4,6 +4,9 @@ namespace KRTsimbalov
 {
     public partial class Form1 : Form
     {
+        private List<string> filePaths = new List<string>();
+        private Point mouseOffset;
+        private bool isMouseDown = false;
         public Form1()
         {
             InitializeComponent();
@@ -18,7 +21,6 @@ namespace KRTsimbalov
             }
         }
 
-        private List<string> filePaths = new List<string>();
         private void btnSelectFiles_Click(object sender, EventArgs e)
         {
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
@@ -44,7 +46,7 @@ namespace KRTsimbalov
         {
             listBox2.Items.Clear(); // Очищаем ListBox2 перед выводом результата
 
-            if (listBox1.Items.Count==0)
+            if (listBox1.Items.Count == 0)
                 MessageBox.Show("Необходимо выбрать Файлы", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
             Dictionary<string, string> fileHashes = new Dictionary<string, string>();
@@ -186,5 +188,33 @@ namespace KRTsimbalov
         {
             Close();
         }
+
+        private void Form1_MouseDown(object sender, MouseEventArgs e)
+        {
+            // Запоминаем, что мышь зажата, и точку относительно левого верхнего угла формы
+            if (e.Button == MouseButtons.Left)
+            {
+                isMouseDown = true;
+                mouseOffset = new Point(e.X, e.Y);
+            }
+        }
+        private void Form1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (isMouseDown)
+            {
+                // Расчет нового положения формы
+                Point newLocation = this.Location;
+                newLocation.X += e.X - mouseOffset.X;
+                newLocation.Y += e.Y - mouseOffset.Y;
+                this.Location = newLocation;
+            }
+        }
+
+        // Событие для завершения перетаскивания
+        private void Form1_MouseUp(object sender, MouseEventArgs e)
+        {
+            isMouseDown = false; // Останавливаем перетаскивание
+        }
+
     }
 }

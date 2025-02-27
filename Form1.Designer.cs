@@ -152,6 +152,9 @@
             ShowIcon = false;
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Идентичность Файлов";
+            MouseDown += Form1_MouseDown;
+            MouseMove += Form1_MouseMove;
+            MouseUp += Form1_MouseUp;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
