@@ -41,7 +41,7 @@
             // 
             // btnSelectFiles
             // 
-            btnSelectFiles.Location = new Point(312, 482);
+            btnSelectFiles.Location = new Point(305, 482);
             btnSelectFiles.Name = "btnSelectFiles";
             btnSelectFiles.Size = new Size(172, 41);
             btnSelectFiles.TabIndex = 0;
@@ -57,7 +57,7 @@
             listBox1.ForeColor = SystemColors.Window;
             listBox1.FormattingEnabled = true;
             listBox1.ItemHeight = 21;
-            listBox1.Location = new Point(91, 55);
+            listBox1.Location = new Point(91, 61);
             listBox1.Name = "listBox1";
             listBox1.Size = new Size(600, 149);
             listBox1.TabIndex = 1;
@@ -93,7 +93,7 @@
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 15F);
             label2.ForeColor = SystemColors.Window;
-            label2.Location = new Point(296, 228);
+            label2.Location = new Point(297, 231);
             label2.Name = "label2";
             label2.Size = new Size(188, 28);
             label2.TabIndex = 4;
