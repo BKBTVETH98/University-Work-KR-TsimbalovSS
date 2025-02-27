@@ -44,6 +44,9 @@ namespace KRTsimbalov
         {
             listBox2.Items.Clear(); // Очищаем ListBox2 перед выводом результата
 
+            if (listBox1.Items.Count==0)
+                MessageBox.Show("Необходимо выбрать Файлы", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
             Dictionary<string, string> fileHashes = new Dictionary<string, string>();
 
             // Вычисляем хеши файлов
@@ -64,7 +67,6 @@ namespace KRTsimbalov
             // Сравниваем файлы по хешам и выводим результат в ListBox2
             foreach (var file1 in filePaths)
             {
-                bool isIdentical = false;
                 string identicalFiles = string.Empty;
                 foreach (var file2 in filePaths)
                 {
@@ -93,23 +95,59 @@ namespace KRTsimbalov
         {
             listBox2.Items.Clear(); // Очищаем ListBox2 перед выводом результата
 
-            // Сравниваем файлы побайтово и выводим результат в ListBox2
+            if (listBox1.Items.Count == 0)
+                MessageBox.Show("Необходимо выбрать Файлы", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+            // Словарь для хранения побайтовых сравнений
+            Dictionary<string, List<string>> fileComparisons = new Dictionary<string, List<string>>();
+
+            // Сравниваем все файлы побайтово
             for (int i = 0; i < filePaths.Count; i++)
             {
-                for (int j = i + 1; j < filePaths.Count; j++)
-                {
-                    string file1 = filePaths[i];
-                    string file2 = filePaths[j];
+                string file1 = filePaths[i];
+                string fileName1 = Path.GetFileName(file1); // Получаем имя первого файла
 
+                // Инициализируем список для хранения идентичных файлов
+                if (!fileComparisons.ContainsKey(file1))
+                {
+                    fileComparisons[file1] = new List<string>();
+                }
+
+                // Сравниваем файл1 со всеми остальными файлами
+                for (int j = 0; j < filePaths.Count; j++)
+                {
+                    // Пропускаем сравнение файла с самим собой
+                    if (i == j)
+                        continue;
+
+                    string file2 = filePaths[j];
+                    string fileName2 = Path.GetFileName(file2); // Получаем имя второго файла
+
+                    // Если файлы идентичны побайтово
                     if (AreFilesIdentical(file1, file2))
                     {
-                        listBox2.Items.Add($"{Path.GetFileName(file1)} и {Path.GetFileName(file2)}: Идентичны.");
-                    }
-                    else
-                    {
-                        listBox2.Items.Add($"{Path.GetFileName(file1)} и {Path.GetFileName(file2)}: Отличаются.");
+                        fileComparisons[file1].Add(fileName2); // Добавляем имя второго файла в список идентичных
                     }
                 }
+            }
+
+            // Выводим результаты в ListBox2
+            foreach (var fileComparison in fileComparisons)
+            {
+                string fileName1 = Path.GetFileName(fileComparison.Key);
+                string identicalFiles = string.Join(", ", fileComparison.Value); // Преобразуем список в строку через запятую
+
+                if (string.IsNullOrEmpty(identicalFiles))
+                {
+                    // Если не найдено идентичных файлов
+                    listBox2.Items.Add($"{fileName1}: Отличается от всех выбранных файлов.");
+                }
+                else
+                {
+                    // Если файлы идентичны хотя бы с одним
+                    listBox2.Items.Add($"{fileName1}: Идентичен файлам: {identicalFiles}");
+                }
+                // Пример для побайтового сравнения
             }
         }
 
