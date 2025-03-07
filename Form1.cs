@@ -1,22 +1,23 @@
+using KRTsimbalov.Class;
 using System.Reflection.Metadata;
 using System.Security.Cryptography;
+using System.Security.Policy;
 
 namespace KRTsimbalov
 {
     public partial class Form1 : Form
     {
         private Form currentForm;
-        private Point mouseOffset;
-        private bool isMouseDown = false;
         private List<Control> savedControls = new List<Control>();
         private Dictionary<string, List<string>> fileComparisons = new Dictionary<string, List<string>>();
-        public Form2 form2 = new Form2();
+        private Form2 form2 = new Form2();
 
 
         public Form1()
         {
             InitializeComponent();
             OpForm(); //вызов метода 
+            form2 = new Form2();
 
         }
         async void OpForm() //плавное по€вление формы
@@ -172,39 +173,22 @@ namespace KRTsimbalov
 
         private void Form1_MouseDown(object sender, MouseEventArgs e)
         {
-            // «апоминаем, что мышь зажата, и точку относительно левого верхнего угла формы
-            if (e.Button == MouseButtons.Left)
-            {
-                isMouseDown = true;
-                mouseOffset = new Point(e.X, e.Y);
-            }
+           MoveForm.MouseEnter(e);
         }
         private void Form1_MouseMove(object sender, MouseEventArgs e)
         {
-            if (isMouseDown)
-            {
-                // –асчет нового положени€ формы
-                Point newLocation = this.Location;
-                newLocation.X += e.X - mouseOffset.X;
-                newLocation.Y += e.Y - mouseOffset.Y;
-                this.Location = newLocation;
-            }
+            MoveForm.NewLocation(this, e);
         }
 
         // —обытие дл€ завершени€ перетаскивани€
         private void Form1_MouseUp(object sender, MouseEventArgs e)
         {
-            isMouseDown = false; // ќстанавливаем перетаскивание
+            MoveForm.MouseDown();
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
             OpenChildForm(form2);
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            form2 = new Form2();
         }
         private void OpenChildForm(Form childForm)
         {

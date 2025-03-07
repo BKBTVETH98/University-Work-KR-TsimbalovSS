@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using KRTsimbalov.Class;
+using System.Diagnostics;
 
 
 namespace KRTsimbalov
