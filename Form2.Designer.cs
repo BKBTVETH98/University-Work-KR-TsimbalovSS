@@ -57,6 +57,7 @@
             btnCompareByByte.TabIndex = 7;
             btnCompareByByte.Text = "Открыть папку с файлом";
             btnCompareByByte.UseVisualStyleBackColor = true;
+            btnCompareByByte.Click += btnCompareByByte_Click;
             // 
             // button1
             // 
@@ -66,6 +67,7 @@
             button1.TabIndex = 6;
             button1.Text = "Удалить дубли";
             button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // btnSelectFiles
             // 
@@ -96,6 +98,7 @@
             listBox1.Font = new Font("Segoe UI", 12F);
             listBox1.ForeColor = SystemColors.Window;
             listBox1.FormattingEnabled = true;
+            listBox1.HorizontalScrollbar = true;
             listBox1.ItemHeight = 21;
             listBox1.Location = new Point(29, 57);
             listBox1.Name = "listBox1";
