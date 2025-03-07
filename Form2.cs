@@ -22,14 +22,7 @@ namespace KRTsimbalov
                 if (listBox1.SelectedItem.ToString().Contains(".txt"))
                     Process.Start("notepad.exe", listBox1.SelectedItem.ToString());
                 else
-                    try
-                    {
-                        Process.Start(listBox1.SelectedItem.ToString());
-                    }
-                    catch(Exception ex)
-                    {
-                        MessageBox.Show($"{ex}","Ошибка");
-                    }
+                    Process.Start(listBox1.SelectedItem.ToString());
             }
         }
 
