@@ -79,8 +79,10 @@ namespace KRTsimbalov
             {
                 listBox1.Items.Remove(file); // Удаляем файл по пути
                 File.Delete(file);
+                uniqueFiles.Clear();
             }
 
+            
             // Обновляем список файлов после удаления дублей
             MessageBox.Show($"Удалены дубли. Осталось {listBox1.Items.Count} файлов.");
         }
