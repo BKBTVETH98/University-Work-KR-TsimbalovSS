@@ -24,9 +24,9 @@ namespace KRTsimbalov
                     {
                         Process.Start(listBox1.SelectedItem.ToString());
                     }
-                    catch(Exception ex)
+                    catch (Exception ex)
                     {
-                        MessageBox.Show($"{ex}","Ошибка");
+                        MessageBox.Show($"{ex}", "Ошибка");
                     }
             }
         }
@@ -80,7 +80,7 @@ namespace KRTsimbalov
                 Algoritm.fileComparisons.Clear();
                 Algoritm.uniqueFiles.Clear();
             }
-
+            Algoritm.uniqueFiles.Clear();
             // Обновляем список файлов после удаления дублей
             MessageBox.Show($"Удалены дубли. Осталось {listBox1.Items.Count} файлов.");
         }
