@@ -6,7 +6,7 @@ namespace KRTsimbalov
 {
     public partial class Form2 : Form
     {   // Словарь для хранения уникальных хешей
-        Dictionary<string, string> uniqueFiles = new Dictionary<string, string>();
+        
 
         // Проходим по всем элементам ListBox и оставляем только уникальные
         List<string> filesToRemove = new List<string>();
@@ -64,13 +64,13 @@ namespace KRTsimbalov
                 string fileHash = Algoritm.GetFileHash(filePath); // Получаем хеш файла
 
                 // Если файл с таким хешем уже существует, помечаем его для удаления
-                if (uniqueFiles.ContainsValue(fileHash))
+                if (Algoritm.uniqueFiles.ContainsValue(fileHash))
                 {
                     filesToRemove.Add(filePath);
                 }
                 else
                 {
-                    uniqueFiles.Add(filePath, fileHash);
+                    Algoritm.uniqueFiles.Add(filePath, fileHash);
                 }
             }
 
@@ -79,7 +79,7 @@ namespace KRTsimbalov
             {
                 listBox1.Items.Remove(file); // Удаляем файл по пути
                 File.Delete(file);
-                uniqueFiles.Clear();
+                Algoritm.uniqueFiles.Clear();
             }
 
             

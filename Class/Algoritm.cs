@@ -11,6 +11,7 @@ namespace KRTsimbalov.Class
     static internal class Algoritm
     {
         static public Dictionary<string, string> fileHashes = new Dictionary<string, string>();
+        static public Dictionary<string, string> uniqueFiles = new Dictionary<string, string>();
         static public Dictionary<string, List<string>> fileComparisons = new Dictionary<string, List<string>>();
         static public List<string> filePaths = new List<string>();
         static public string GetFileHash(string filePath)
