@@ -9,7 +9,7 @@ namespace KRTsimbalov
     {
         private Form currentForm;
         private List<Control> savedControls = new List<Control>();
-        private Dictionary<string, List<string>> fileComparisons = new Dictionary<string, List<string>>();
+       
         private Form2 form2 = new Form2();
 
 
@@ -98,7 +98,7 @@ namespace KRTsimbalov
             }
             catch (Exception ex)
             {
-                Algoritm.CleanData(listBox1,listBox2, Algoritm.filePaths, fileComparisons);
+                Algoritm.CleanData(listBox1, listBox2, Algoritm.filePaths, Algoritm.fileComparisons);
             }
         }
 
@@ -118,9 +118,9 @@ namespace KRTsimbalov
                     string fileName1 = Path.GetFileName(file1); // Получаем имя первого файла
 
                     // Инициализируем список для хранения идентичных файлов
-                    if (!fileComparisons.ContainsKey(file1))
+                    if (!Algoritm.fileComparisons.ContainsKey(file1))
                     {
-                        fileComparisons[file1] = new List<string>();
+                        Algoritm.fileComparisons[file1] = new List<string>();
                     }
 
                     // Сравниваем файл1 со всеми остальными файлами
@@ -136,14 +136,14 @@ namespace KRTsimbalov
                         // Если файлы идентичны побайтово
                         if (Algoritm.AreFilesIdentical(file1, file2))
                         {
-                            fileComparisons[file1].Add(fileName2); // Добавляем имя второго файла в список идентичных
+                            Algoritm.fileComparisons[file1].Add(fileName2); // Добавляем имя второго файла в список идентичных
                         }
                     }
                 }
                 // Сравниваем все файлы побайтово
 
                 // Выводим результаты в ListBox2
-                foreach (var fileComparison in fileComparisons)
+                foreach (var fileComparison in Algoritm.fileComparisons)
                 {
                     string fileName1 = Path.GetFileName(fileComparison.Key);
                     string identicalFiles = string.Join(", ", fileComparison.Value); // Преобразуем список в строку через запятую
@@ -160,10 +160,11 @@ namespace KRTsimbalov
                     }
                     // Пример для побайтового сравнения
                 }
+                Algoritm.fileComparisons.Clear();
             }
             catch
             {
-                Algoritm.CleanData(listBox1, listBox2, Algoritm.filePaths, fileComparisons);
+                Algoritm.CleanData(listBox1, listBox2, Algoritm.filePaths, Algoritm.fileComparisons);
             }   
         }
         private void pictureBox1_Click(object sender, EventArgs e)
