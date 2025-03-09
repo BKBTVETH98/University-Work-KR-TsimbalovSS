@@ -54,7 +54,6 @@ namespace KRTsimbalov
             if (listBox1.Items.Count == 0)
                 MessageBox.Show("Необходимо выбрать Файлы", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
-            Dictionary<string, string> fileHashes = new Dictionary<string, string>();
             listBox2.Items.Clear();
             try
             {
@@ -65,7 +64,7 @@ namespace KRTsimbalov
                 {
 
                     string hash = Algoritm.GetFileHash(filePath);
-                    fileHashes[filePath] = hash;
+                    Algoritm.fileHashes[filePath] = hash;
                     continue;
                 }
 
@@ -75,7 +74,7 @@ namespace KRTsimbalov
                     string identicalFiles = string.Empty;
                         foreach (var file2 in Algoritm.filePaths)
                         {
-                            if (file1 != file2 && fileHashes[file1] == fileHashes[file2])
+                            if (file1 != file2 && Algoritm.fileHashes[file1] == Algoritm.fileHashes[file2])
                             {
                                 if (string.IsNullOrEmpty(identicalFiles))
                                     identicalFiles = Path.GetFileName(file2);
